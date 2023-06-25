@@ -50,7 +50,7 @@ public class ExcelReader {
         keys.append("【网络渠道➕5】: ");
 
         //重点航向，过100
-        StringBuffer keysOverHundred = new StringBuffer();
+        //StringBuffer keysOverHundred = new StringBuffer();
         //keysOverHundred.append("【网络渠道满100➕2】: ");
 
         //不是重点航线，没有过100
@@ -61,13 +61,28 @@ public class ExcelReader {
         StringBuffer normalsOverHundred = new StringBuffer();
         normalsOverHundred.append("【网络渠道满100➕2】: ");
 
+        //重点航线合并
+        for (Worker worker : workers) {
+            //将重点航线，其过百
+            if (worker.isKey() && worker.isOverHundred()) {
+                for (Worker worker1 : workers) {
+                    if (worker.getName().equals(worker1.getName()) && worker1.isKey()) {
+                        int num = worker.getNums() + worker1.getNums();
+                        worker1.setNums(num);
+                    }
+                }
+            }
+        }
+
         Arrays.stream(workers).forEach(worker -> {
             if (worker.isKey()) {
                 if (worker.isOverHundred()) {
-                    keysOverHundred.append(worker.getName() + "" + worker.getNums() + "、");
+                    //keysOverHundred.append(worker.getName() + "" + worker.getNums() + "、");
                 } else {
                     keys.append(worker.getName() + "" + worker.getNums() + "、");
                 }
+
+
             } else {
                 if (worker.isOverHundred()) {
                     normalsOverHundred.append(worker.getName() + "" + worker.getNums() + "、");
@@ -77,7 +92,7 @@ public class ExcelReader {
             }
         });
         System.out.println("\uD83D\uDD3A重点航线（5月25日-6月1日数据）:");
-        System.out.println(keysOverHundred);
+        //System.out.println(keysOverHundred);
         System.out.println(keys);
 
         System.out.println("\uD83D\uDD3A普通航线:");
@@ -91,9 +106,11 @@ public class ExcelReader {
         Set<Worker> workers = new HashSet<>(512);
         for (int i = sheet.getFirstRowNum() + 1; i < sheet.getLastRowNum(); i++) {
             Row row = sheet.getRow(i);
+            if (row == null) continue;
 
             //处理乘务组姓名
             Cell groups = row.getCell(9);
+            if (groups == null) continue;
             groups.setCellType(CellType.STRING);
 
             //表扬信数量
@@ -115,6 +132,7 @@ public class ExcelReader {
     private static void parserName(Set<Worker> workers, String groups, String key, String overHundred, String num) {
         for (String s : formatStr(groups)) {
             String[] tmp = s.replace("）", "").split("（");
+            //System.out.println(Arrays.toString(tmp));
             if ("YN1".equalsIgnoreCase(tmp[1])) {
 
                 //姓名相同，且航线相同,且是是否超过一百字相同，才更新nums
