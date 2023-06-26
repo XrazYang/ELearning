@@ -49,10 +49,6 @@ public class ExcelReader {
         StringBuffer keys = new StringBuffer();
         keys.append("【网络渠道➕5】: ");
 
-        //重点航向，过100
-        //StringBuffer keysOverHundred = new StringBuffer();
-        //keysOverHundred.append("【网络渠道满100➕2】: ");
-
         //不是重点航线，没有过100
         StringBuffer normals = new StringBuffer();
         normals.append("【网络渠道不满100➕1】: ");
@@ -66,7 +62,7 @@ public class ExcelReader {
             //将重点航线，其过百
             if (worker.isKey() && worker.isOverHundred()) {
                 for (Worker worker1 : workers) {
-                    if (worker.getName().equals(worker1.getName()) && worker1.isKey()) {
+                    if (worker.getName().equals(worker1.getName()) && worker1.isKey() && !worker1.isOverHundred()) {
                         int num = worker.getNums() + worker1.getNums();
                         worker1.setNums(num);
                     }
@@ -76,13 +72,9 @@ public class ExcelReader {
 
         Arrays.stream(workers).forEach(worker -> {
             if (worker.isKey()) {
-                if (worker.isOverHundred()) {
-                    //keysOverHundred.append(worker.getName() + "" + worker.getNums() + "、");
-                } else {
+                if (!worker.isOverHundred()) {
                     keys.append(worker.getName() + "" + worker.getNums() + "、");
                 }
-
-
             } else {
                 if (worker.isOverHundred()) {
                     normalsOverHundred.append(worker.getName() + "" + worker.getNums() + "、");
@@ -92,7 +84,6 @@ public class ExcelReader {
             }
         });
         System.out.println("\uD83D\uDD3A重点航线（5月25日-6月1日数据）:");
-        //System.out.println(keysOverHundred);
         System.out.println(keys);
 
         System.out.println("\uD83D\uDD3A普通航线:");
@@ -110,7 +101,6 @@ public class ExcelReader {
 
             //处理乘务组姓名
             Cell groups = row.getCell(9);
-            if (groups == null) continue;
             groups.setCellType(CellType.STRING);
 
             //表扬信数量
