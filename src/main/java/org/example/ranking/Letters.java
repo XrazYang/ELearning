@@ -122,7 +122,7 @@ public class Letters {
         //readNames("D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\names.txt");
         //letters("D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\names.txt", "D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\letters.txt");
 
-        writeNames("D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\names.txt", "D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\letters.txt");
+        writeNames("/Users/xrazyang/Java/ELearning/src/main/resources/data/names.txt", "/Users/xrazyang/Java/ELearning/src/main/resources/data/表扬信.txt");
     }
 
 }
