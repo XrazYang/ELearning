@@ -1,4 +1,4 @@
-package org.example.points;
+package org.example.ranking;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
