@@ -1,4 +1,4 @@
-package org.example.commendation;
+package org.example.letters;
 
 import java.util.Arrays;
 import java.util.List;
