@@ -124,7 +124,7 @@ public class WorkMeeting {
     }
 
     public static void main(String[] args) {
-        writeNames("/Users/xrazyang/Java/ELearning/src/main/resources/data/names.txt", "/Users/xrazyang/Java/ELearning/src/main/resources/data/workMeeting.txt");
+        writeNames("D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\names.txt", "D:\\dev\\Java\\ELearning\\src\\main\\resources\\data\\workMeeting.txt");
     }
 
 
