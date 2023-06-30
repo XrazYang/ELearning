@@ -92,7 +92,7 @@ public class ExcelReader {
     }
 
 
-    private static Set<Worker> parseExcel(Workbook workbook) {
+    public static Set<Worker> parseExcel(Workbook workbook) {
         Sheet sheet = workbook.getSheetAt(0);
         Set<Worker> workers = new HashSet<>(512);
         for (int i = sheet.getFirstRowNum() + 1; i < sheet.getLastRowNum(); i++) {
