@@ -120,10 +120,10 @@ public class QuarterRanking {
     }
 
     public static void formatOutput() {
-        parsePersonScore("D:\\dev\\Java\\ELearning\\src\\main\\resources\\积分明细\\6.txt", 6);
-        //parsePersonScore("D:\\dev\\Java\\ELearning\\src\\main\\resources\\积分明细\\5.txt", 5);
-        parsePersonScore("D:\\dev\\Java\\ELearning\\src\\main\\resources\\积分明细\\4.txt", 4);
-        //allStewards.forEach(System.out::println);
+        parsePersonScore("/Users/xrazyang/Java/ELearning/src/main/resources/积分明细/6.txt", 6);
+        parsePersonScore("/Users/xrazyang/Java/ELearning/src/main/resources/积分明细/5.txt", 5);
+        parsePersonScore("/Users/xrazyang/Java/ELearning/src/main/resources/积分明细/4.txt", 4);
+        allStewards.forEach(System.out::println);
     }
 
     public static void main(String[] args) {
