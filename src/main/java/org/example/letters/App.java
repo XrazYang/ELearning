@@ -7,6 +7,6 @@ import java.io.IOException;
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        ExcelReader.readExcel("/Users/xrazyang/Java/ELearning/src/main/resources/5_151353199_2_表扬信汇总表_70_70.xlsx");
+        ExcelReader.readExcel("D:\\dev\\Java\\ELearning\\src\\main\\resources\\表扬信\\151353199_2_表扬信汇总表_147_147.xlsx");
     }
 }
